@@ -126,7 +126,9 @@
         return;
     }
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Incoming Call" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    NSString *from = self.ongoingCall.otherCallMembers.firstObject.channel.from.data;
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Incoming Call from %@", from ? from : @"Unknown"] message:@"" preferredStyle:UIAlertControllerStyleAlert];
     
     __weak MainViewController *weakSelf = self;
     UIAlertAction* answerAction = [UIAlertAction actionWithTitle:@"Answer" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
